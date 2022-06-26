@@ -27,10 +27,12 @@ module.exports = class Combine extends Component {
         const hasOutputPath = output !== undefined && output !== '';
 
         if (hasOutputPath) {
+            const outputPath = path.resolve(this.context.config.publicPath, output)
+                    
             this.context.addTask(
                 this.createTask({
                     src: sources,
-                    dst: output,
+                    dst: outputPath,
                     babel
                 })
             );
